@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Tailwind Starter Template - Ghostwind CSS : Tailwind Toolbox</title>
+	<meta name="author" content="name">
+	<meta name="description" content="description here">
+	<meta name="keywords" content="keywords,here">
+	<link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+	<!--Replace with your tailwind.css once created-->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" rel="stylesheet">
+	<style>
+		.smooth {
+			transition: box-shadow 0.3s ease-in-out;
+		}
+
+		::selection {
+			background-color: aliceblue
+		}
+	</style>
+</head>
+
+<body class="bg-white font-sans leading-normal tracking-normal">
+	<!--Title-->
+	<div class="text-center pt-16 md:pt-32">
+		<p class="text-sm md:text-base text-green-500 font-bold">24 AUGUST 2021 <span class="text-gray-900">/</span>
+			For MY BBB</p>
+		<h1 class="font-bold break-normal text-3xl md:text-5xl">Dear BBB</h1>
+	</div>
+
+	<!--image-->
+	<div class="container w-full max-w-6xl mx-auto bg-white bg-contain bg-no-repeat mt-8 rounded"
+		style="background-image:url('./static/images/sunset.jpeg'); height: 25vh;"></div>
+
+	<!--Container-->
+	<div class="container max-w-5xl mx-auto mt-10">
+
+		<div class="mx-0 sm:mx-6">
+
+			<div class="bg-white w-full p-8 md:p-24 text-xl md:text-2xl text-gray-800 leading-normal"
+				style="font-family:Georgia,serif;">
+
+				<!--Post Content-->
+
+
+				<!--Lead Para-->
+				<p class="text-2xl md:text-3xl mb-5">
+					Dear BBB
+				</p>
+
+				<p class="py-3">We are only a couple of weeks away from moving in together! Through out our relationship
+					we've had ups and downs. I'm glad we were able to overcome each obstacle. We've grown a lot
+					and I'm happy we haven't stopped. I'm excited for whats next and I'm glad I'm taking this big step
+					with you.</p>
+
+				<p class="py-3">Thanks for making me a better partner, I won't ever stop improving.
+					If you ever need someone to listen don't hesitate to call me. Although I haven't been the best at it
+					I promise to support and be there for you, just like how you support me.</p>
+
+				<p class="py-3">I love you, appreciate you, and thank you for being my partner.</p>
+
+				<p class="py-6">- BBB</p>
+
+				<p class="py-6 italic"> P.S. Lets scooter and eat good food in D.C. ! </p>
+				<!--/ Post Content-->
+
+			</div>
+
+
+
+
+
+
+
+		</div>
+
+
+	</div>
+
+
+	<script>
+		/* Progress bar */
+		//Source: https://alligator.io/js/progress-bar-javascript-css-variables/
+		var h = document.documentElement,
+			b = document.body,
+			st = 'scrollTop',
+			sh = 'scrollHeight',
+			progress = document.querySelector('#progress'),
+			scroll;
+		var scrollpos = window.scrollY;
+		var header = document.getElementById("header");
+
+		document.addEventListener('scroll', function () {
+
+			/*Refresh scroll % width*/
+			scroll = (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight) * 100;
+			progress.style.setProperty('--scroll', scroll + '%');
+
+			/*Apply classes for slide in bar*/
+			scrollpos = window.scrollY;
+
+			if (scrollpos > 100) {
+				header.classList.remove("hidden");
+				header.classList.remove("fadeOutUp");
+				header.classList.add("slideInDown");
+			}
+			else {
+				header.classList.remove("slideInDown");
+				header.classList.add("fadeOutUp");
+				header.classList.add("hidden");
+			}
+
+		});
+
+	</script>
+
+</body>
+
+</html>
