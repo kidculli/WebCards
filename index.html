@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Tailwind Starter Template - Ghostwind CSS : Tailwind Toolbox</title>
+	<title>Dear BBB</title>
 	<meta name="author" content="name">
 	<meta name="description" content="description here">
 	<meta name="keywords" content="keywords,here">
@@ -32,8 +32,11 @@
 	</div>
 
 	<!--image-->
-	<div class="container w-full max-w-6xl mx-auto bg-white bg-contain bg-no-repeat mt-8 rounded"
+	<div id="imageContainer"
+		class="container w-full max-w-6xl mx-auto bg-white bg-contain bg-center bg-no-repeat mt-8 rounded"
 		style="background-image:url('./static/images/sunset.jpeg'); height: 25vh;"></div>
+
+
 
 	<!--Container-->
 	<div class="container max-w-5xl mx-auto mt-10">
@@ -82,38 +85,73 @@
 
 
 	<script>
-		/* Progress bar */
-		//Source: https://alligator.io/js/progress-bar-javascript-css-variables/
-		var h = document.documentElement,
-			b = document.body,
-			st = 'scrollTop',
-			sh = 'scrollHeight',
-			progress = document.querySelector('#progress'),
-			scroll;
-		var scrollpos = window.scrollY;
-		var header = document.getElementById("header");
+		var images = [
+			'./static/images/arttec.jpeg',
+			'./static/images/ass.jpeg',
+			'./static/images/bag.jpeg',
+			'./static/images/balboa.jpeg',
+			'./static/images/beach.jpeg',
+			'./static/images/biking.jpeg',
+			'./static/images/bridge.gif',
+			'./static/images/chuhily.jpeg',
+			'./static/images/climb.jpeg',
+			'./static/images/condo.jpeg',
+			'./static/images/contemp.jpeg',
+			'./static/images/fisrt.gif',
+			'./static/images/Garden.jpeg',
+			'./static/images/gif1.gif',
+			'./static/images/gif2.gif',
+			'./static/images/grill23.jpeg',
+			'./static/images/IMG_20200328_193009.jpg',
+			'./static/images/IMG_20200328_193027.jpg',
+			'./static/images/karaoke.jpeg',
+			'./static/images/lajolla.jpeg',
+			'./static/images/park.jpeg',
+			'./static/images/playa.jpeg',
+			'./static/images/reunion.jpeg',
+			'./static/images/sunset.jpeg',
+			'./static/images/tea.jpeg',
+			'./static/images/ug.jpeg',
+			'./static/images/va.jpeg',
+			'./static/images/waikiki.jpeg',
+			'./static/images/wine.jpeg',
+			'./static/images/xmas.jpeg'
+		]
 
-		document.addEventListener('scroll', function () {
+		var imagesCopy = [...images]
 
-			/*Refresh scroll % width*/
-			scroll = (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight) * 100;
-			progress.style.setProperty('--scroll', scroll + '%');
+		function getRandomInt(max) {
+			return Math.floor(Math.random() * max);
+		}
 
-			/*Apply classes for slide in bar*/
-			scrollpos = window.scrollY;
+		function fadeOut(el, callback) {
+			const effect = new KeyframeEffect(
+				el, // Element to animate
+				[ // Keyframes
+					{ opacity: 1 },
+					{ opacity: 0 }
+				],
+				{ duration: 3000, easing: "linear" } // Keyframe settings
+			);
 
-			if (scrollpos > 100) {
-				header.classList.remove("hidden");
-				header.classList.remove("fadeOutUp");
-				header.classList.add("slideInDown");
+			const animation = new Animation(effect, document.timeline);
+			animation.onfinish = callback
+			animation.play();
+
+		}
+
+		setInterval(() => {
+			if (imagesCopy.length === 0) {
+				imagesCopy = [...images]
 			}
-			else {
-				header.classList.remove("slideInDown");
-				header.classList.add("fadeOutUp");
-				header.classList.add("hidden");
-			}
-
-		});
+			const imageIndex = getRandomInt(imagesCopy.length - 1)
+			const randomImage = imagesCopy[imageIndex]
+			imagesCopy.splice(imageIndex, 1)
+			const imageContainer = document.getElementById('imageContainer')
+			fadeOut(imageContainer, () => {
+				document.getElementById('imageContainer').style.backgroundImage = `url(${randomImage})`
+			})
+		}, 5000)
 
 	</script>
 
